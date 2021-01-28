@@ -1,0 +1,24 @@
+{
+	"name": "capgemini-macs/cg-wp-custom-tables",
+	"description": "WP Plugin for managing custom tables",
+	"homepage": "https://github.com/capgemini-macs/wp-custom-tables",
+	"keywords": [
+		"wordpress"
+	],
+	"license": "GPL-2.0+",
+	"authors": [
+		{
+			"name":"Capgemini MACS PL",
+			"email":"edge-support.global@capgemini.com",
+			"homepage":"https://capgemini.com"
+		}
+	],
+	"support"    : {
+        "issues": "https://github.com/capgemini-macs/wp-custom-tables/issues",
+        "source": "https://github.com/capgemini-macs/wp-custom-tables"
+	},
+	"type": "wordpress-plugin",
+	"require": {
+		"composer/installers": "~1.0"
+	 }
+}
