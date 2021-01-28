@@ -6,3 +6,4 @@ The plugin is based on other plugins:
 https://github.com/nonsensecreativity/WPDB-Helper/blob/master/Db.php
 https://github.com/alpipego/awp-database
 https://github.com/rubengc/CT
+
