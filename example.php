@@ -15,18 +15,22 @@ $create_table = $custom_table->create_table( [
 			'type' => 'bigint',
 			'length' => '20',
 			'auto_increment' => true,
-			'primary_key' => true,
+			'primary_key'    => true,
+			'nullable'       => true,
 		],
 		'title' => [
-			'type' => 'varchar',
-			'length' => '50',
+			'type'     => 'varchar',
+			'length'   => '50',
+			'nullable' => true,
 		],
 		'status' => [
-			'type' => 'varchar',
-			'length' => '50',
+			'type'     => 'varchar',
+			'length'   => '50',
+			'nullable' => true,
 		],
 		'date' => [
-			'type' => 'datetime',
+			'type'     => 'datetime',
+			'nullable' => true,
 		]
 	],
 	// Also you can define schema as string
