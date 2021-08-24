@@ -228,5 +228,4 @@ class Wp_Custom_Tables_Structure extends Wp_Custom_Tables {
 
 		return $result;
 	}
-
 }
