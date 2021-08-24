@@ -24,7 +24,7 @@ class Wp_Custom_Tables_Data extends Wp_Custom_Tables {
 	 * @param  string    $order      Order key eq. ASC or DESC
 	 * @return array     $results    The query results
 	 */
-	public function get_all( $orderby = NULL, $order = NULL, $output_type = OBJECT ) {
+	public function get_all( $orderby = NULL, $order = NULL, $output_type = OBJECT, $limit = NULL, $offset = NULL ) {
 
 		$cache_key = 'custom_table_' . $this->table_name . '_get_all';
 		$cache = wp_cache_get( $cache_key, 'custom_tables' );
@@ -47,11 +47,20 @@ class Wp_Custom_Tables_Data extends Wp_Custom_Tables {
 			}
 		}
 
+		if ( null !== $limit ) {
+			$sql .= " LIMIT $limit";
+		}
+
+		if ( null !== $offset ) {
+			$sql .= " OFFSET $offset";
+		}
+
 		$results = $this->wpdb->get_results( $sql, $output_type );
 
 		wp_cache_set( $cache_key, $results, 'custom_tables', 3600 );
 
 		return $results;
+
 	}
 
 	/**
