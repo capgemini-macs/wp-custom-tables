@@ -670,4 +670,28 @@ class Wp_Custom_Tables_Data extends Wp_Custom_Tables {
 		return '';
 	}
 
+	/**
+	 * Get sql
+	 *
+	 * @since 1.0.0
+	 * @param string           	$sql         		The prepared sql statement
+	 * @param array           	$placeholders   Placeholders for wpdb prepare
+	 * @param constant         	$output_type    One of three pre-defined constants. Defaults to OBJECT.
+	 * @param string           	$result_type    Result type: 'row' or 'results'
+	 * @return object|array    	$results        Query results
+	 *
+	 */
+	public function get_sql( $sql, $placeholders, $output_type = OBJECT, $result_type = 'row' ) {
+
+		$sql = $this->wpdb->prepare( $sql, $placeholders );
+
+		if ( 'row' === $result_type ) {
+			$results = $this->wpdb->get_row( $sql, $output_type );
+		} else {
+			$results = $this->wpdb->get_results( $sql, $output_type );
+		}
+
+		return $results;
+	}
+
 }
