@@ -13,6 +13,8 @@ namespace WpCustomTables;
 // Exit if accessed directly
 defined( 'ABSPATH' ) || exit;
 
+include_once( ABSPATH . 'wp-admin/includes/plugin.php' );
+
 /**
  * Abstract class with common methods
  */
@@ -33,3 +35,9 @@ require plugin_dir_path( __FILE__ ) . 'inc/class-wp-custom-tables-data.php';
  */
 require plugin_dir_path( __FILE__ ) . 'inc/class-wp-custom-tables-schema.php';
 require plugin_dir_path( __FILE__ ) . 'inc/class-wp-custom-tables-schema-updater.php';
+
+/**
+ * Files Offers relation
+ */
+require plugin_dir_path( __FILE__ ) . '/inc/files-offers-table.php';
+add_action( 'init', __NAMESPACE__ . '\create_files_offers_table' );

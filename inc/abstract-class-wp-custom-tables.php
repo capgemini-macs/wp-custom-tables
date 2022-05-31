@@ -2,7 +2,7 @@
 
 /**
  *
- * The class for managing Wordpress custom tables
+ * The class for managing WordPress custom tables
  *
  * @since      1.0.0
  * @package    Wp_Custom_Tables
@@ -50,7 +50,7 @@ abstract class Wp_Custom_Tables {
 	 */
 	protected $charset = null;
 
-	 /**
+	/**
 	 * Constructor for the class
 	 *
 	 * @since 1.0.0
