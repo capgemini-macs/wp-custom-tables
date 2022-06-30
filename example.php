@@ -96,7 +96,9 @@ $get_wheres = $my_table->get_wheres(
 	],
 	$orderby     = 'category',
 	$order       = 'ASC',
-	$output_type = OBJECT_K
+	$output_type = OBJECT_K,
+	3,
+	0
 );
 
 // Count

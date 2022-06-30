@@ -156,7 +156,7 @@ class Wp_Custom_Tables_Data extends Wp_Custom_Tables {
 	 * @param  const           $output_type    Type constant OBJECT|ARRAY_A|ARRAY_N
 	 * @return array           $result
 	 */
-	public function get_wheres( $column = '', Array $conditions, $operator = '=', $format = '%s', $orderby = NULL, $order = 'ASC', $output_type = OBJECT ) {
+	public function get_wheres( $column = '', Array $conditions, $operator = '=', $format = '%s', $orderby = NULL, $order = 'ASC', $output_type = OBJECT, $limit = NULL, $offset = NULL ) {
 
 		$operator = $this->check_operator( $operator );
 		$format   = $this->check_format( $format );
@@ -218,6 +218,14 @@ class Wp_Custom_Tables_Data extends Wp_Custom_Tables {
 					$sql .= " $order";
 				}
 			}
+		}
+
+		if ( null !== $limit ) {
+			$sql .= " LIMIT $limit";
+		}
+
+		if ( null !== $offset ) {
+			$sql .= " OFFSET $offset";
 		}
 
 		$result = $this->wpdb->get_results( $sql, $output_type );
