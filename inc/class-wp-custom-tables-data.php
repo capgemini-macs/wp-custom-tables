@@ -168,11 +168,6 @@ class Wp_Custom_Tables_Data extends Wp_Custom_Tables {
 
 		foreach ( $conditions as $field => $value ) {
 
-			if ( !$value ) {
-				$i++;
-				continue;
-			}
-
 			if ( is_array( $operator ) ) {
 				if ( isset( $operator[$field] ) ) {
 					$op = $operator[$field];
@@ -414,6 +409,7 @@ class Wp_Custom_Tables_Data extends Wp_Custom_Tables {
 							'not in',
 							'between',
 							'not between',
+							'is'
 					)
 			);
 	}
@@ -637,6 +633,23 @@ class Wp_Custom_Tables_Data extends Wp_Custom_Tables {
 	protected function sql_not_like( $column, $value, $format = '%s', $and = true ) {
 		$sql = $this->sql_and( $and );
 		$sql .= $this->wpdb->prepare( " `$column` NOT LIKE $format", $value );
+		return $sql;
+	}
+
+	/**
+	 * Append IS NULL clause for sql query
+	 *
+	 * @since  1.0.0
+	 * @param  string    $column    The Column Name
+	 * @param  string    $value     Not used here
+	 * @param  string    $format    Not used here
+	 * @param  boolean   $and       before the statement prepend AND if true, prepend OR if $and === 'OR', prepend nothing if false
+	 * @return string    $sql       The prepared sql statement
+	 *
+	 */
+	protected function sql_is( $column, $value, $format = '%s', $and = true ) {
+		$sql = $this->sql_and( $and );
+		$sql .= " `$column` IS NULL";
 		return $sql;
 	}
 
