@@ -2,7 +2,7 @@
 
 /**
  *
- * The class for managing Wordpress custom table structure
+ * The class for managing WordPress custom table structure
  *
  * @since      1.0.0
  * @package    Wp_Custom_Tables
@@ -23,14 +23,14 @@ class Wp_Custom_Tables_Structure extends Wp_Custom_Tables {
 	 */
 	public $primary_key = '';
 
-	 /**
+	/**
 	 * Database version
 	 *
 	 * @var int
 	 */
 	protected $version = 0;
 
-	 /**
+	/**
 	 * Is this table for a site, or global
 	 *
 	 * @var boolean
@@ -51,14 +51,14 @@ class Wp_Custom_Tables_Structure extends Wp_Custom_Tables {
 	 */
 	public $engine = '';
 
-	 /**
+	/**
 	 * Current database version
 	 *
 	 * @var string
 	 */
 	protected $db_version = 0;
 
-  /**
+	/**
 	 * Create the table
 	 *
 	 * @since 1.0.0
@@ -147,7 +147,7 @@ class Wp_Custom_Tables_Structure extends Wp_Custom_Tables {
 		( true === $this->global ) ? update_network_option( null, $this->db_version_key, $this->version ) : update_option( $this->db_version_key, $this->version );
 	}
 
-  /**
+	/**
 	 * Create or upgrade the table
 	 *
 	 * @since 1.0.0
@@ -164,9 +164,9 @@ class Wp_Custom_Tables_Structure extends Wp_Custom_Tables {
 		$this->schema = ( isset( $args['schema'] ) ) ? new Wp_Custom_Tables_Schema( $args['schema'] ) : '';
 
 		// If not primary key given, then look at out schema
-		if( $this->schema && ! $this->primary_key ) {
+		if ( $this->schema && ! $this->primary_key ) {
 			foreach ( $this->schema->fields as $field_id => $field_args ) {
-				if( $field_args['primary_key'] === true ) {
+				if ( $field_args['primary_key'] === true ) {
 					$this->primary_key = $field_id;
 					break;
 				}
@@ -224,7 +224,7 @@ class Wp_Custom_Tables_Structure extends Wp_Custom_Tables {
 	 */
 	protected function upgrade() {
 		$schema_updater = new Wp_Custom_Tables_Schema_Updater( $this );
-		$result = $schema_updater->run();
+		$result         = $schema_updater->run();
 
 		return $result;
 	}
